@@ -1291,9 +1291,8 @@ class TestInfluxDBClient(unittest.TestCase):
 
     def test_grant_admin_privileges_invalid(self):
         """Test grant invalid admin privs for TestInfluxDBClient object."""
-        cli = InfluxDBClient('host', 8086, 'username', 'password')
-        with _mocked_session(cli, 'get', 400):
-            for client in self.clients:
+        for client in self.clients:
+            with _mocked_session(client, 'post', 400):
                 with self.assertRaises(InfluxDBClientError):
                     client.grant_admin_privileges('')
 
@@ -1317,9 +1316,8 @@ class TestInfluxDBClient(unittest.TestCase):
 
     def test_revoke_admin_privileges_invalid(self):
         """Test revoke invalid admin privs for TestInfluxDBClient object."""
-        cli = InfluxDBClient('host', 8086, 'username', 'password')
-        with _mocked_session(cli, 'get', 400):
-            for client in self.clients:
+        for client in self.clients:
+            with _mocked_session(client, 'post', 400):
                 with self.assertRaises(InfluxDBClientError):
                     client.revoke_admin_privileges('')
 
