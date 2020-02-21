@@ -101,7 +101,7 @@ class InfluxDBClient(object):
                  cert=None,
                  gzip=False,
                  session=None,
-                 use_msgpack=False
+                 use_msgpack=True
                  ):
         """Construct a new InfluxDBClient object."""
         self.__host = host
