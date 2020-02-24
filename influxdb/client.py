@@ -79,6 +79,11 @@ class InfluxDBClient(object):
     :param session: allow for the new client request to use an existing
         requests Session, defaults to None
     :type session: requests.Session
+    :param use_msgpack: A bool indicating to use msgpack to retrieve query
+        results from InfluxDB.  If False, the fallback will be JSON.  This flag
+        sets the Accept header of the request.  Defaults to True
+    :type use_msgpack: bool
+   
     :raises ValueError: if cert is provided but ssl is disabled (set to False)
 
     """
